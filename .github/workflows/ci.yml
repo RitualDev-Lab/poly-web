@@ -17,6 +17,9 @@ jobs:
         node-version: [20.x, 22.x]
 
     steps:
+      - name: Configure Git Line Endings
+        run: git config --global core.autocrlf input
+
       - name: Checkout Repository
         uses: actions/checkout@v4
 
