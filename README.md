@@ -42,6 +42,7 @@ npm run build
 ## Ecosystem Repositories
 
 - **Core CLI**: [RitualDev-Lab/poly](https://github.com/RitualDev-Lab/poly)
+- **Official VS Code Extension**: [RitualDev-Lab/vscode-poly](https://github.com/RitualDev-Lab/vscode-poly)
 - **Official GitHub Action**: [RitualDev-Lab/setup-poly](https://github.com/RitualDev-Lab/setup-poly)
 - **Web Platform**: [RitualDev-Lab/poly-web](https://github.com/RitualDev-Lab/poly-web)
 
