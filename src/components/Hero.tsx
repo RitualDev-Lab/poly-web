@@ -17,7 +17,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDocs, onOpenContact }) => {
     curl: "curl -fsSL https://poly.ritualdev.in/install.sh | sh",
     powershell: "irm https://poly.ritualdev.in/install.ps1 | iex",
     brew: "brew install RitualDev-Lab/tap/poly",
-    scoop: "scoop bucket add ritualdev https://github.com/RitualDev-Lab/scoop-bucket\nscoop install poly",
+    scoop:
+      "scoop bucket add ritualdev https://github.com/RitualDev-Lab/scoop-bucket\nscoop install poly",
     npm: "npm i -g @ritualdev-lab/poly",
   };
 
@@ -39,7 +40,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDocs, onOpenContact }) => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {/* Badge */}
-        <div 
+        <div
           onClick={() => onOpenDocs("quickstart")}
           className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-slate-700/80 text-xs text-slate-300 mb-8 shadow-inner hover:border-sky-500/50 transition-colors cursor-pointer group"
         >
