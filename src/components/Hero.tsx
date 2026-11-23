@@ -9,15 +9,16 @@ interface HeroProps {
 
 export const Hero: React.FC<HeroProps> = ({ onOpenDocs, onOpenContact }) => {
   const [activeInstallTab, setActiveInstallTab] = useState<
-    "npm" | "pnpm" | "action" | "devcontainer"
-  >("npm");
+    "curl" | "powershell" | "brew" | "scoop" | "npm"
+  >("curl");
   const [copied, setCopied] = useState(false);
 
   const installSnippets = {
+    curl: "curl -fsSL https://poly.ritualdev.in/install.sh | sh",
+    powershell: "irm https://poly.ritualdev.in/install.ps1 | iex",
+    brew: "brew install RitualDev-Lab/tap/poly",
+    scoop: "scoop bucket add ritualdev https://github.com/RitualDev-Lab/scoop-bucket\nscoop install poly",
     npm: "npm i -g @ritualdev-lab/poly",
-    pnpm: "pnpm add -g @ritualdev-lab/poly",
-    action: "- uses: RitualDev-Lab/setup-poly@v1\n  with:\n    cache: true",
-    devcontainer: "poly docker --devcontainer",
   };
 
   const handleCopy = () => {
@@ -38,12 +39,15 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDocs, onOpenContact }) => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {/* Badge */}
-        <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-slate-700/80 text-xs text-slate-300 mb-8 shadow-inner hover:border-sky-500/50 transition-colors cursor-pointer group">
+        <div 
+          onClick={() => onOpenDocs("quickstart")}
+          className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-slate-700/80 text-xs text-slate-300 mb-8 shadow-inner hover:border-sky-500/50 transition-colors cursor-pointer group"
+        >
           <span className="flex h-2 w-2 rounded-full bg-sky-400 animate-ping" />
-          <span className="font-semibold text-white">Poly v0.4.0 Released</span>
+          <span className="font-semibold text-white">Poly v0.5.1 Released</span>
           <span className="text-slate-500">•</span>
           <span className="text-sky-400 group-hover:underline">
-            Multi-Stage Docker & DevContainer Generator &rarr;
+            Standalone Native Binaries (Zero Node.js Required) &rarr;
           </span>
         </div>
 
@@ -82,46 +86,56 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDocs, onOpenContact }) => {
         <div className="max-w-xl mx-auto mb-10">
           <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-2 shadow-2xl backdrop-blur-xl">
             {/* Tabs */}
-            <div className="flex items-center space-x-1 border-b border-slate-800 pb-2 mb-2 px-2 text-xs font-mono">
+            <div className="flex items-center space-x-1 border-b border-slate-800 pb-2 mb-2 px-2 text-xs font-mono overflow-x-auto">
+              <button
+                onClick={() => setActiveInstallTab("curl")}
+                className={`px-3 py-1 rounded-md transition-colors shrink-0 ${
+                  activeInstallTab === "curl"
+                    ? "bg-slate-800 text-sky-400 font-bold"
+                    : "text-slate-400 hover:text-slate-200"
+                }`}
+              >
+                curl (Linux/macOS)
+              </button>
+              <button
+                onClick={() => setActiveInstallTab("powershell")}
+                className={`px-3 py-1 rounded-md transition-colors shrink-0 ${
+                  activeInstallTab === "powershell"
+                    ? "bg-slate-800 text-sky-400 font-bold"
+                    : "text-slate-400 hover:text-slate-200"
+                }`}
+              >
+                PowerShell (Windows)
+              </button>
+              <button
+                onClick={() => setActiveInstallTab("brew")}
+                className={`px-3 py-1 rounded-md transition-colors shrink-0 ${
+                  activeInstallTab === "brew"
+                    ? "bg-slate-800 text-sky-400 font-bold"
+                    : "text-slate-400 hover:text-slate-200"
+                }`}
+              >
+                Homebrew
+              </button>
+              <button
+                onClick={() => setActiveInstallTab("scoop")}
+                className={`px-3 py-1 rounded-md transition-colors shrink-0 ${
+                  activeInstallTab === "scoop"
+                    ? "bg-slate-800 text-sky-400 font-bold"
+                    : "text-slate-400 hover:text-slate-200"
+                }`}
+              >
+                Scoop
+              </button>
               <button
                 onClick={() => setActiveInstallTab("npm")}
-                className={`px-3 py-1 rounded-md transition-colors ${
+                className={`px-3 py-1 rounded-md transition-colors shrink-0 ${
                   activeInstallTab === "npm"
                     ? "bg-slate-800 text-sky-400 font-bold"
                     : "text-slate-400 hover:text-slate-200"
                 }`}
               >
                 npm
-              </button>
-              <button
-                onClick={() => setActiveInstallTab("pnpm")}
-                className={`px-3 py-1 rounded-md transition-colors ${
-                  activeInstallTab === "pnpm"
-                    ? "bg-slate-800 text-sky-400 font-bold"
-                    : "text-slate-400 hover:text-slate-200"
-                }`}
-              >
-                pnpm
-              </button>
-              <button
-                onClick={() => setActiveInstallTab("action")}
-                className={`px-3 py-1 rounded-md transition-colors ${
-                  activeInstallTab === "action"
-                    ? "bg-slate-800 text-sky-400 font-bold"
-                    : "text-slate-400 hover:text-slate-200"
-                }`}
-              >
-                GitHub Action
-              </button>
-              <button
-                onClick={() => setActiveInstallTab("devcontainer")}
-                className={`px-3 py-1 rounded-md transition-colors ${
-                  activeInstallTab === "devcontainer"
-                    ? "bg-slate-800 text-sky-400 font-bold"
-                    : "text-slate-400 hover:text-slate-200"
-                }`}
-              >
-                DevContainer
               </button>
             </div>
 
