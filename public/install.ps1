@@ -28,7 +28,7 @@ if (-not [Environment]::Is64BitOperatingSystem) {
 }
 
 # Resolve Latest Release Tag
-$latestTag = "v0.5.1"
+$latestTag = "v0.6.0"
 try {
     $releaseInfo = Invoke-RestMethod -Uri "https://api.github.com/repos/RitualDev-Lab/poly/releases/latest" -UseBasicParsing -TimeoutSec 10
     if ($releaseInfo -and $releaseInfo.tag_name) {

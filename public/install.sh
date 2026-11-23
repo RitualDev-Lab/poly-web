@@ -75,7 +75,7 @@ elif command -v wget >/dev/null 2>&1; then
 fi
 
 if [ -z "$LATEST_TAG" ]; then
-  LATEST_TAG="v0.5.1"
+  LATEST_TAG="v0.6.0"
 fi
 
 printf "%s==> Resolving Release:%s %s\n" "${BLUE}" "${RESET}" "$LATEST_TAG"
