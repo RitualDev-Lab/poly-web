@@ -1,4 +1,14 @@
-import { ArrowRight, Building2, Check, HelpCircle, Shield, Sparkles } from "lucide-react";
+import {
+  ArrowRight,
+  Building2,
+  Check,
+  Copy,
+  HelpCircle,
+  Key,
+  Shield,
+  Sparkles,
+  Terminal,
+} from "lucide-react";
 import type React from "react";
 import { useState } from "react";
 
@@ -8,6 +18,30 @@ interface PricingProps {
 
 export const Pricing: React.FC<PricingProps> = ({ onOpenContact }) => {
   const [isAnnual, setIsAnnual] = useState(true);
+  const [workspaceName, setWorkspaceName] = useState("my-org");
+  const [generatedToken, setGeneratedToken] = useState(
+    "poly_tok_live_7a9f4e2c8190d6b5e3f1aa20c74b8912",
+  );
+  const [copiedToken, setCopiedToken] = useState(false);
+  const [copiedCommand, setCopiedCommand] = useState(false);
+
+  const handleGenerateToken = () => {
+    const randomHex = Array.from({ length: 32 }, () =>
+      Math.floor(Math.random() * 16).toString(16),
+    ).join("");
+    setGeneratedToken(`poly_tok_live_${randomHex}`);
+  };
+
+  const copyToClipboard = (text: string, type: "token" | "command") => {
+    navigator.clipboard.writeText(text);
+    if (type === "token") {
+      setCopiedToken(true);
+      setTimeout(() => setCopiedToken(false), 2000);
+    } else {
+      setCopiedCommand(true);
+      setTimeout(() => setCopiedCommand(false), 2000);
+    }
+  };
 
   const faqs = [
     {
@@ -128,12 +162,10 @@ export const Pricing: React.FC<PricingProps> = ({ onOpenContact }) => {
 
             <div className="pt-8">
               <a
-                href="https://github.com/RitualDev-Lab/poly"
-                target="_blank"
-                rel="noreferrer"
+                href="#cloud"
                 className="w-full py-3 rounded-xl text-sm font-semibold text-slate-200 bg-slate-800 hover:bg-slate-700 transition-colors flex items-center justify-center space-x-1.5"
               >
-                <span>Get Started Free</span>
+                <span>Generate Free Cache Token</span>
                 <ArrowRight className="w-4 h-4" />
               </a>
             </div>
@@ -196,13 +228,15 @@ export const Pricing: React.FC<PricingProps> = ({ onOpenContact }) => {
             </div>
 
             <div className="pt-8">
-              <button
-                onClick={onOpenContact}
+              <a
+                href="https://checkout.dodopayments.com/buy/pdt_0NpjONGugY5QkrFDUaPva"
+                target="_blank"
+                rel="noreferrer"
                 className="w-full py-3.5 rounded-xl text-sm font-bold text-slate-950 bg-gradient-to-r from-sky-400 to-indigo-400 hover:from-sky-300 hover:to-indigo-300 transition-all flex items-center justify-center space-x-2 shadow-lg shadow-sky-500/25"
               >
-                <span>Start 14-Day Free Team Trial</span>
+                <span>Upgrade to Team Pro ($29/mo)</span>
                 <ArrowRight className="w-4 h-4" />
-              </button>
+              </a>
             </div>
           </div>
 
@@ -270,6 +304,104 @@ export const Pricing: React.FC<PricingProps> = ({ onOpenContact }) => {
                 <span>Contact Enterprise Sales</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Cloud Token Generator & Self-Serve Setup */}
+        <div
+          id="cloud"
+          className="max-w-4xl mx-auto mb-20 p-8 rounded-3xl bg-slate-900/80 border border-sky-500/30 shadow-2xl relative"
+        >
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-6">
+            <div>
+              <div className="inline-flex items-center space-x-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-sky-950 text-sky-400 border border-sky-800/80 mb-2">
+                <Key className="w-3 h-3" />
+                <span>Self-Serve Poly Cloud Setup</span>
+              </div>
+              <h3 className="text-xl sm:text-2xl font-black text-white">
+                Generate Your Remote Cache Token
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-400">
+                Instantly connect local development and CI/CD pipelines to Poly's distributed
+                artifact cache.
+              </p>
+            </div>
+            <button
+              onClick={handleGenerateToken}
+              className="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-sky-500 text-slate-950 hover:bg-sky-400 transition-colors shrink-0"
+            >
+              Generate New Token
+            </button>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <div>
+              <label className="block text-xs font-semibold text-slate-400 mb-1">
+                Workspace / Org Slug
+              </label>
+              <input
+                type="text"
+                value={workspaceName}
+                onChange={(e) =>
+                  setWorkspaceName(e.target.value.toLowerCase().replace(/[^a-z0-9_-]/g, ""))
+                }
+                placeholder="my-team"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white font-mono text-xs focus:border-sky-500 focus:outline-none"
+              />
+            </div>
+            <div>
+              <label className="block text-xs font-semibold text-slate-400 mb-1">
+                API Token (Secret)
+              </label>
+              <div className="flex items-center space-x-2">
+                <input
+                  type="text"
+                  readOnly
+                  value={generatedToken}
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-emerald-400 font-mono text-xs focus:outline-none"
+                />
+                <button
+                  onClick={() => copyToClipboard(generatedToken, "token")}
+                  className="p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors shrink-0"
+                  title="Copy Token"
+                >
+                  {copiedToken ? (
+                    <Check className="w-4 h-4 text-emerald-400" />
+                  ) : (
+                    <Copy className="w-4 h-4" />
+                  )}
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Quickstart Command */}
+          <div className="rounded-2xl bg-slate-950 p-4 border border-slate-800">
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-xs font-semibold text-slate-400 flex items-center space-x-1.5">
+                <Terminal className="w-3.5 h-3.5 text-sky-400" />
+                <span>1-Click Terminal Authentication</span>
+              </span>
+              <button
+                onClick={() =>
+                  copyToClipboard(
+                    `poly login --url https://cache.ritualdev.in --token ${generatedToken} --workspace ${workspaceName || "default"}`,
+                    "command",
+                  )
+                }
+                className="text-xs font-medium text-sky-400 hover:text-sky-300 flex items-center space-x-1"
+              >
+                {copiedCommand ? (
+                  <Check className="w-3.5 h-3.5 text-emerald-400" />
+                ) : (
+                  <Copy className="w-3.5 h-3.5" />
+                )}
+                <span>{copiedCommand ? "Copied Command!" : "Copy Command"}</span>
+              </button>
+            </div>
+            <div className="font-mono text-xs text-sky-300 overflow-x-auto select-all whitespace-pre">
+              {`poly login --url https://cache.ritualdev.in --token ${generatedToken} --workspace ${workspaceName || "default"}`}
             </div>
           </div>
         </div>
