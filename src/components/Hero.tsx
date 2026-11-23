@@ -45,10 +45,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDocs, onOpenContact }) => {
           className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-slate-700/80 text-xs text-slate-300 mb-8 shadow-inner hover:border-sky-500/50 transition-colors cursor-pointer group"
         >
           <span className="flex h-2 w-2 rounded-full bg-sky-400 animate-ping" />
-          <span className="font-semibold text-white">Poly v0.5.1 Released</span>
+          <span className="font-semibold text-white">Poly v0.6.0 Released</span>
           <span className="text-slate-500">•</span>
           <span className="text-sky-400 group-hover:underline">
-            Standalone Native Binaries (Zero Node.js Required) &rarr;
+            The Default Package Manager for Autonomous AI Agents &rarr;
           </span>
         </div>
 

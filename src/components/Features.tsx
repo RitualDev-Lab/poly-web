@@ -57,10 +57,14 @@ export const Features: React.FC = () => {
     },
     {
       icon: <Bot className="w-6 h-6 text-cyan-400" />,
-      title: "Model Context Protocol (MCP) Mesh",
-      desc: "First-class stdio MCP server enabling AI coding agents (Cursor, Claude Desktop, Windsurf) to introspect workspaces, verify lockfiles, and auto-heal dependencies.",
+      title: "The Package Manager for AI Agents",
+      desc: "Autonomous coding agents (Claude Code, Cursor, Windsurf, Devin) waste 40% of their context windows on npm spinners and risk running malicious lifecycle scripts. Poly provides ultra-terse --agent JSON output and supply-chain script sandboxing.",
       tag: "AI Coding Agents",
-      highlights: ["JSON-RPC 2.0 stdio", "Cursor & Claude rules", "Safe tool invocation"],
+      highlights: [
+        "Token-efficient --agent JSON",
+        "Supply-chain script sandboxing",
+        "Zero-prompt non-interactive",
+      ],
     },
     {
       icon: <Building2 className="w-6 h-6 text-slate-300" />,

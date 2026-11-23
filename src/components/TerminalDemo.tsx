@@ -13,6 +13,122 @@ interface TerminalScenario {
 export const TerminalDemo: React.FC = () => {
   const scenarios: TerminalScenario[] = [
     {
+      id: "agent",
+      name: "AI Agent & Sandbox",
+      command: "poly add --agent --sandbox npm:zod pypi:fastapi",
+      badge: "AI Optimization",
+      output: [
+        {
+          text: "🛡️ [poly:sandbox] Pre-flight lifecycle script analysis active...",
+          color: "text-sky-400",
+          bold: true,
+        },
+        {
+          text: "  ✔ npm:zod@3.23.8: 0 lifecycle scripts (postinstall: none) -> Clean",
+          color: "text-emerald-400",
+        },
+        {
+          text: "  ✔ pypi:fastapi: wheel distribution verified -> Injected --no-build-isolation",
+          color: "text-emerald-400",
+        },
+        {
+          text: "⚡ [poly:sandbox] Enforcing --ignore-scripts across Node/Python child processes",
+          color: "text-slate-300",
+        },
+        { text: "" },
+        {
+          text: '{"status":"ok","command":"add","ecosystem":"polyglot","count":2,"installed":[{"purl":"npm:zod@3.23.8","ecosystem":"npm"},{"purl":"pypi:fastapi","ecosystem":"pypi"}],"sandbox":{"sandboxed":true,"neutralizedScripts":0},"metrics":{"durationMs":312,"tokensSaved":1920}}',
+          color: "text-emerald-300",
+          bold: true,
+        },
+        { text: "" },
+        {
+          text: "✨ Agent mode: 42 tokens emitted vs ~2,100 tokens of raw npm/pip logs (98% token savings).",
+          color: "text-sky-400",
+          bold: true,
+        },
+      ],
+    },
+    {
+      id: "dev",
+      name: "Parallel Dev Matrix",
+      command: "poly dev",
+      badge: "Cross-Service Matrix",
+      output: [
+        {
+          text: "⚡ [poly] Launching parallel dev matrix across 3 services (Ctrl+C to stop)...",
+          color: "text-sky-400",
+          bold: true,
+        },
+        {
+          text: "[web:dev]    ▲ Next.js 15.0.3 - Local: http://localhost:3000",
+          color: "text-cyan-400",
+        },
+        {
+          text: "[api:dev]    INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)",
+          color: "text-emerald-400",
+        },
+        {
+          text: "[worker:dev] [Cargo]   Running unbuffered event stream consumer (16 threads)",
+          color: "text-amber-400",
+        },
+        {
+          text: "[web:dev]    ✓ Compiled /page in 420ms",
+          color: "text-cyan-400",
+        },
+        {
+          text: "[api:dev]    INFO:     200 OK GET /v1/health (1.2ms)",
+          color: "text-emerald-400",
+        },
+        { text: "" },
+        {
+          text: "✨ Multi-service dev runner active. Unified process tree with graceful termination.",
+          color: "text-white",
+          bold: true,
+        },
+      ],
+    },
+    {
+      id: "outdated",
+      name: "Upgrade Intelligence",
+      command: "poly outdated",
+      badge: "Semver Intelligence",
+      output: [
+        {
+          text: "⚡ [poly] Scanning outdated dependencies across Node, Python, Rust, and Go...",
+          color: "text-sky-400",
+          bold: true,
+        },
+        {
+          text: "Package            Current    Wanted     Latest     Ecosystem   Location",
+          color: "text-slate-400",
+          bold: true,
+        },
+        {
+          text: "zod                3.22.4     3.23.8     3.23.8     npm         apps/web",
+          color: "text-amber-400",
+        },
+        {
+          text: "pydantic           2.8.2      2.9.2      2.9.2      pypi        services/api",
+          color: "text-amber-400",
+        },
+        {
+          text: "tokio              1.38.0     1.41.0     1.41.0     cargo       crates/engine",
+          color: "text-amber-400",
+        },
+        {
+          text: "react              18.3.1     18.3.1     19.0.0     npm         apps/web",
+          color: "text-rose-400",
+        },
+        { text: "" },
+        {
+          text: "💡 Run 'poly upgrade' or 'poly upgrade --interactive' to safely apply updates.",
+          color: "text-emerald-400",
+          bold: true,
+        },
+      ],
+    },
+    {
       id: "add",
       name: "Polyglot Add",
       command: "poly add npm:zod@3.23.8 pypi:fastapi cargo:tokio",
@@ -256,6 +372,22 @@ export const TerminalDemo: React.FC = () => {
         { text: "Available commands:", color: "text-white" },
         {
           text: "  add <purl...>     Install dependencies (e.g. npm:zod, pypi:uv)",
+          color: "text-slate-300",
+        },
+        {
+          text: "  dev               Run parallel cross-service development matrix",
+          color: "text-slate-300",
+        },
+        {
+          text: "  outdated          Inspect pending updates across all 4 ecosystems",
+          color: "text-slate-300",
+        },
+        {
+          text: "  agent <cmd>       Token-efficient commands for AI coding agents",
+          color: "text-slate-300",
+        },
+        {
+          text: "  sandbox check     Scan packages for malicious lifecycle scripts",
           color: "text-slate-300",
         },
         {
