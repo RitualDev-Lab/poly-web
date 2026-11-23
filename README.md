@@ -6,7 +6,7 @@
 
 The official flagship enterprise web platform, interactive terminal simulator, ROI calculator, and documentation portal for **[Poly](https://github.com/RitualDev-Lab/poly)** — The Universal Polyglot CLI Package & Dependency Orchestrator for Node.js, Python, Rust, and Go.
 
-Live portal: **[https://ritualdev.in/poly](https://ritualdev.in/poly)**
+Live portal: **[https://poly.ritualdev.in](https://poly.ritualdev.in)**
 
 ---
 
