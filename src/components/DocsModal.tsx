@@ -33,7 +33,7 @@ export const DocsModal: React.FC<DocsModalProps> = ({
             <BookOpen className="w-5 h-5 text-sky-400" />
             <h2 className="text-lg font-bold text-white">Poly Official Documentation</h2>
             <span className="text-xs px-2 py-0.5 rounded bg-sky-950 text-sky-400 border border-sky-800">
-              v0.4.0
+              v0.6.1
             </span>
           </div>
           <button

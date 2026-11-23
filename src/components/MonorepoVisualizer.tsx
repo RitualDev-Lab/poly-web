@@ -860,7 +860,7 @@ jobs:
                 </div>
                 <div className="flex items-center space-x-3 text-xs">
                   <span className="text-slate-400">
-                    Engine: <strong className="text-white font-mono">poly v0.6.0</strong>
+                    Engine: <strong className="text-white font-mono">poly v0.6.1</strong>
                   </span>
                   <span className="text-slate-500">•</span>
                   <span className="text-slate-400">

@@ -19,7 +19,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenDocs, onOpenContact }) => 
               </span>
               <span className="text-xl font-black text-white tracking-tight">poly</span>
               <span className="text-xs px-2 py-0.5 rounded bg-sky-950 text-sky-400 border border-sky-800/60 font-mono">
-                v0.4.0
+                v0.6.1
               </span>
             </div>
             <p className="text-slate-400 text-xs sm:text-sm max-w-sm leading-relaxed">

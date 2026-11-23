@@ -46,7 +46,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDocs, onOpenContact }) => 
               className="inline-flex items-center space-x-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-sky-950/80 text-sky-400 border border-sky-800/60 hover:bg-sky-900/60 transition-colors"
             >
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              <span>v0.6.0</span>
+              <span>v0.6.1</span>
             </a>
           </div>
 
