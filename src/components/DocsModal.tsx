@@ -216,6 +216,33 @@ export const DocsModal: React.FC<DocsModalProps> = ({
                   </div>
                   <div className="p-4 rounded-xl bg-[#06090F] border border-slate-800">
                     <div className="font-mono font-bold text-sky-400 mb-1">
+                      poly dev [--filter &lt;pattern&gt;]
+                    </div>
+                    <div className="text-slate-400">
+                      Cross-Service Dev Matrix: Concurrently streams color-coded output from all
+                      services and handles graceful process termination on Ctrl+C.
+                    </div>
+                  </div>
+                  <div className="p-4 rounded-xl bg-[#06090F] border border-slate-800">
+                    <div className="font-mono font-bold text-sky-400 mb-1">
+                      poly outdated [--json] & poly upgrade
+                    </div>
+                    <div className="text-slate-400">
+                      Concurrent registry scan across npm, PyPI, crates.io, and Go proxy in
+                      &lt;300ms with colorized semver indicators and batch upgrade.
+                    </div>
+                  </div>
+                  <div className="p-4 rounded-xl bg-[#06090F] border border-slate-800">
+                    <div className="font-mono font-bold text-sky-400 mb-1">
+                      poly completion &lt;bash|zsh|fish|powershell&gt;
+                    </div>
+                    <div className="text-slate-400">
+                      Fast, zero-dependency tab auto-completion scripts for shell subcommands,
+                      flags, members, and dynamic tasks.
+                    </div>
+                  </div>
+                  <div className="p-4 rounded-xl bg-[#06090F] border border-slate-800">
+                    <div className="font-mono font-bold text-sky-400 mb-1">
                       poly cache &lt;save|restore|clean&gt;
                     </div>
                     <div className="text-slate-400">

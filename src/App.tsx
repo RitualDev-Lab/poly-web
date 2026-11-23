@@ -6,6 +6,7 @@ import { DocsModal } from "./components/DocsModal.tsx";
 import { Features } from "./components/Features.tsx";
 import { Footer } from "./components/Footer.tsx";
 import { Hero } from "./components/Hero.tsx";
+import { MonorepoVisualizer } from "./components/MonorepoVisualizer.tsx";
 import { Navbar } from "./components/Navbar.tsx";
 import { Pricing } from "./components/Pricing.tsx";
 import { RoiCalculator } from "./components/RoiCalculator.tsx";
@@ -34,6 +35,7 @@ export default function App(): React.ReactElement {
       <main className="flex-1">
         <Hero onOpenDocs={handleOpenDocs} onOpenContact={handleOpenContact} />
         <TerminalDemo />
+        <MonorepoVisualizer />
         <Features />
         <ArchitectureExplorer />
         <RoiCalculator onOpenContact={handleOpenContact} />
