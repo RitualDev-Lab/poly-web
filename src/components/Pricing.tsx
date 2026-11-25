@@ -308,7 +308,7 @@ export const Pricing: React.FC<PricingProps> = ({ onOpenContact }) => {
           </div>
         </div>
 
-        {/* Cloud Token Generator & Self-Serve Setup */}
+        {/* Self-Hosted Cache Token Generator */}
         <div
           id="cloud"
           className="max-w-4xl mx-auto mb-20 p-8 rounded-3xl bg-slate-900/80 border border-sky-500/30 shadow-2xl relative"
@@ -317,14 +317,16 @@ export const Pricing: React.FC<PricingProps> = ({ onOpenContact }) => {
             <div>
               <div className="inline-flex items-center space-x-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-sky-950 text-sky-400 border border-sky-800/80 mb-2">
                 <Key className="w-3 h-3" />
-                <span>Self-Serve Poly Cloud Setup</span>
+                <span>Self-Hosted Cache Setup (Local / VPC)</span>
               </div>
               <h3 className="text-xl sm:text-2xl font-black text-white">
-                Generate Your Remote Cache Token
+                Generate a Self-Hosted Cache Token
               </h3>
               <p className="text-xs sm:text-sm text-slate-400">
-                Instantly connect local development and CI/CD pipelines to Poly's distributed
-                artifact cache.
+                Connect local development or CI to your self-hosted{" "}
+                <code className="text-sky-300">@ritualdev-lab/poly-cloud-api</code> server
+                (LocalDisk, MinIO, S3, or R2 — start locally with{" "}
+                <code className="text-sky-300">npx @ritualdev-lab/poly-cloud-api start</code>).
               </p>
             </div>
             <button
@@ -386,7 +388,7 @@ export const Pricing: React.FC<PricingProps> = ({ onOpenContact }) => {
               <button
                 onClick={() =>
                   copyToClipboard(
-                    `poly login --url https://cache.ritualdev.in --token ${generatedToken} --workspace ${workspaceName || "default"}`,
+                    `poly login --url http://localhost:8080 --token ${generatedToken} --workspace ${workspaceName || "default"}`,
                     "command",
                   )
                 }
@@ -401,7 +403,7 @@ export const Pricing: React.FC<PricingProps> = ({ onOpenContact }) => {
               </button>
             </div>
             <div className="font-mono text-xs text-sky-300 overflow-x-auto select-all whitespace-pre">
-              {`poly login --url https://cache.ritualdev.in --token ${generatedToken} --workspace ${workspaceName || "default"}`}
+              {`poly login --url http://localhost:8080 --token ${generatedToken} --workspace ${workspaceName || "default"}`}
             </div>
           </div>
         </div>
